@@ -18,7 +18,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
      
             super.viewDidLoad()
-            // Do any additional setup after loading the view.
             tableView.delegate = self
             tableView.dataSource = self
             
@@ -49,6 +48,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
            }
            
            func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            // this is linked to the UI since I have set the prototype cell indentifier to post
             let cell = tableView.dequeueReusableCell(withIdentifier: "post", for: indexPath)
             cell.textLabel?.text=pData[indexPath.row]
             return cell
@@ -56,6 +56,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
            }
         
         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            // delete function to delete entries
             if editingStyle == .delete {
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .fade)
